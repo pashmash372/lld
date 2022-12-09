@@ -1,4 +1,4 @@
-package bird;
+package com.scaler.lld.bird;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,6 +14,7 @@ public abstract class Bird {
     private String beakType;
     private BirdType type;
 
-    public abstract void fly();
+    public abstract void makeSound();
 
 }
+
