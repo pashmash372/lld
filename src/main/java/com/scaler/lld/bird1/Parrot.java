@@ -1,6 +1,8 @@
-package com.scaler.lld.bird;
+package com.scaler.lld.bird1;
 
-public class Parrot extends FlyingBird {
+import com.scaler.lld.bird1.interfaces.Flyable;
+
+public class Parrot extends Bird implements Flyable {
 
     public Parrot(Integer weight, String colour, String size, String beakType, BirdType type) {
         super(weight, colour, size, beakType, type);
@@ -13,6 +15,7 @@ public class Parrot extends FlyingBird {
 
     @Override
     public void makeSound() {
-
+        System.out.println("Parrot is making sound");
     }
+
 }

@@ -1,11 +1,9 @@
-package com.scaler.lld.bird;
+package com.scaler.lld.bird1;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
 public abstract class Bird {
     private Integer weight;
@@ -15,6 +13,4 @@ public abstract class Bird {
     private BirdType type;
 
     public abstract void makeSound();
-
 }
-
