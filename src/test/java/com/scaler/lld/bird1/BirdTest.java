@@ -11,14 +11,14 @@ public class BirdTest {
 
     @Test
     public void solve() {
-        Flyable parrot = new Parrot(10, "Green", "Small", "Sharp", BirdType.Parrot);
+        Flyable parrot = new Parrot(10, "Green", "Small", "Sharp", BirdType.Parrot,new FlappingBehaviour());
         parrot.fly();
         ((Bird) parrot).makeSound();
     }
 
     @Test
     public void solve1() {
-        Flyable eagle = new Eagle(20, "Brown", "Medium", "Sharp", BirdType.Eagle);
+        Flyable eagle = new Eagle(20, "Brown", "Medium", "Sharp", BirdType.Eagle,new GlidingBehaviour());
         eagle.fly();
         ((Bird) eagle).makeSound();
     }
