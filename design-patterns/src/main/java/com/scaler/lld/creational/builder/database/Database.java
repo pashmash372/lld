@@ -1,5 +1,6 @@
 package com.scaler.lld.creational.builder.database;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Database {
     private String host;
     private Integer port;

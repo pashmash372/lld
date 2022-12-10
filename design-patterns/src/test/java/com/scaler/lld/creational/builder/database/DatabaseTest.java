@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class DatabaseTest {
 
@@ -57,6 +58,14 @@ public class DatabaseTest {
     @Test(expected = RuntimeException.class)
     public void testBuilderWithNoType() {
         Datastore.builder().build();
+    }
+
+    @Test
+    public void testLombokBuilder() {
+        Database database = Database.builder().host("localhost").port(3306).build();
+        Assert.assertEquals("If host setter is called , host should be local host", "localhost", database.getHost());
+        Assert.assertEquals(Optional.of(3306).get(), database.getPort());
+
     }
 
 }
