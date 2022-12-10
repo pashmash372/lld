@@ -1,7 +1,6 @@
 package com.scaler.lld.creational.builder.database;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class Datastore {
@@ -25,7 +24,6 @@ public class Datastore {
     }
 
     /* Step 2 - Create builder class */
-    @Setter
     public static class DatastoreBuilder {
         /* Step 3 - Copy all fields from outer class */
         private String host;
@@ -35,8 +33,27 @@ public class Datastore {
         private Long Id;
         private DatabaseType type;
 
+        /* Step 4 - Add fluent interfaces for setters */
+        public DatastoreBuilder withHost(String host) {
+            this.host = host;
+            return this;
+        } /* Step 4 - Add fluent interfaces for setters */
+
+        public DatastoreBuilder init(String host, Integer port) {
+            this.host = host;
+            this.port = port;
+            return this;
+        }
+
+        public DatastoreBuilder mysql(DatabaseType type) {
+            this.type = type;
+            return this;
+        }
+
         /* Step 5 - Add a build hook */
         public Datastore build() {
+            boolean isValid = validate();
+            if (!isValid) throw new RuntimeException("Object is not valid");
             Datastore datastore = new Datastore();
             datastore.host = host;
             datastore.port = port;
@@ -44,5 +61,12 @@ public class Datastore {
 
             return datastore;
         }
+
+        private boolean validate() {
+            return type != null;
+        }
     }
 }
+
+
+/* Assignment - Fix the duplicate fields in builder class */

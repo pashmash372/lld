@@ -42,12 +42,21 @@ public class DatabaseTest {
 
     @Test()
     public void testBuilder() {
-        Datastore.DatastoreBuilder builder = Datastore.builder();
-        builder.setHost("localhost");
-        builder.setType(DatabaseType.MY_SQL);
-        Datastore datastore = builder.build();
+        Datastore datastore = Datastore.builder().mysql(DatabaseType.MY_SQL).withHost("localhost").build();
         Assert.assertEquals("If host setter is called , host should be local host", "localhost", datastore.getHost());
         Assert.assertEquals("If host setter is called , type should be MYSQL", DatabaseType.MY_SQL, datastore.getType());
+    }
+
+    @Test()
+    public void testBuilder1() {
+        Datastore datastore = Datastore.builder().init("localhost", 3306).build();
+        Assert.assertEquals("If host setter is called , host should be local host", "localhost", datastore.getHost());
+        Assert.assertEquals("If host setter is called , type should be MYSQL", DatabaseType.MY_SQL, datastore.getType());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testBuilderWithNoType() {
+        Datastore.builder().build();
     }
 
 }
