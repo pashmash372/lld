@@ -39,4 +39,13 @@ public class DatabaseTest {
         Assert.assertEquals("If host setter is called , host should be local host", "localhost", database.getHost());
         Assert.assertEquals("If host setter is called , type should be MYSQL", DatabaseType.MY_SQL, database.getType());
     }
+
+    @Test(expected = AssertionError.class)
+    public void testBuilder() {
+        /*Datastore.DatastoreBuilder datastore = new Datastore.DatastoreBuilder();*/
+        Datastore database = Datastore.builder().build();
+        Assert.assertEquals("If host setter is called , host should be local host", "localhost", database.getHost());
+        Assert.assertEquals("If host setter is called , type should be MYSQL", DatabaseType.MY_SQL, database.getType());
+    }
+
 }
