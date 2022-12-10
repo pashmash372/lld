@@ -1,6 +1,7 @@
 package com.scaler.lld.creational.builder.database;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public class Datastore {
@@ -24,6 +25,7 @@ public class Datastore {
     }
 
     /* Step 2 - Create builder class */
+    @Setter
     public static class DatastoreBuilder {
         /* Step 3 - Copy all fields from outer class */
         private String host;
