@@ -1,5 +1,14 @@
 package com.scaler.lld.creational.builder.database;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Map;
+
+@NoArgsConstructor
+@Getter
+@Setter
 public class Database {
     private String host;
     private Integer port;
@@ -20,14 +29,9 @@ public class Database {
         this.type = type;
     }
 
-    public Database(String host, Integer port, DatabaseType type) {
-        /* this is telescoping anti pattern is */
-        /* anti pattern means you should never use this piece of code */
-        /* huge parameter list , */
-        new Database(host, port, null, null, null, type);
-    }
-
-    public Database(DatabaseType type) {
-        this(null, null, type);
+    public Database(Map<String, Object> values) {
+        this.host = (String) values.get("host");
+        this.port = (Integer) values.get("port");
+        this.type = (DatabaseType) values.get("type");
     }
 }
